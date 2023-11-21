@@ -22,4 +22,29 @@ function App() {
   );
 }
 
+
+// App Component
+const App = () => {
+  const [darkMode, setDarkMode] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  const handleDarkModeToggle = () => {
+    setDarkMode((prevDarkMode) => !prevDarkMode);
+  };
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
+
+  return (
+    <div className={darkMode ? 'dark' : 'light'}>
+      <Header onDarkModeClick={handleDarkModeToggle} />
+      <main>
+        <Filter onCategoryChange={handleCategoryChange} />
+        {/* Rest of your application */}
+      </main>
+    </div>
+  );
+};
+
 export default App;
